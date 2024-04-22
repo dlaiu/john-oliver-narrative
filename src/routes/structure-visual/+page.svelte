@@ -1,7 +1,8 @@
 <script>
     import { onMount } from 'svelte';
     import { goto } from '$app/navigation';
-  
+	  import Scroller from './Scroller.svelte';
+
     onMount(() => {
       function handleKeyDown(event) {
         if (event.key === 'ArrowLeft') {
@@ -14,8 +15,11 @@
         window.removeEventListener('keydown', handleKeyDown);
       };
     });
+
 </script>
-  
-<h1>
-    about page
-</h1>
+
+<!-- <div id='chart'>
+  <Ai2html name="structureChart" description="The Structure of a John Oliver Video" />
+</div> -->
+
+<Scroller />
