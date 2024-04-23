@@ -30,7 +30,7 @@
             }
           case 39: // Right arrow key
             page += 1;
-            if (page === 2) {
+            if (page >= 2) {
               goto('/lede');
               break;
             } else if (page === 1) {
@@ -53,19 +53,27 @@
 
 </script>
 
-<div id='chart'>
-  <div>
-    <Ai2html name="structureChart" description="The Structure of a John Oliver Video" />
+<body>
+  <div id='chart'>
+    <div>
+      <Ai2html name="structureChart" description="The Structure of a John Oliver Video" />
+    </div>
+    <div class="hidden">
+      <Ai2html name="jokesCombined" description="The Structure of a John Oliver Video" />
+    </div>
   </div>
-  <div class="hidden">
-    <Ai2html name="jokesCombined" description="The Structure of a John Oliver Video" />
-  </div>
-</div>
+</body>
+
+
 
 <!-- <Scroller /> -->
 
 <style>
   .hidden {
     display: none;
+  }
+
+  #chart {
+    max-height: 80vh;
   }
 </style>

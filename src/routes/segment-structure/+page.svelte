@@ -30,7 +30,7 @@
           case 39: // Right arrow key
             page += 1;
             if (page === 2) {
-            //   goto('/lede');
+              goto('/complete-segment');
             console.log('next page')
               break;
             } else if (page === 1) {
@@ -62,3 +62,8 @@
 </div>
 
 
+<style>
+    .hidden {
+      display: none;
+    }
+  </style>
