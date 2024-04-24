@@ -21,13 +21,17 @@
 </script>
 
 <body>
-    <h1>Thesis</h1>
+    <div class="title">
+        <h1>Thesis</h1>
+    </div>
 
     <div id="video">
         <video src="JO_source.mp4" preload="auto" tabindex="0" playsinline controls></video>
     </div>
 
-    <p>lorem ipsum</p>
+    <div class="content">
+        <p>His videos always have a very clearly stated thesis, functionally making it like a video essay.</p>
+    </div>
 </body>
 
 <style>
@@ -41,14 +45,29 @@
     #video {
         width: 80%;
         align-self: center;
+        margin: 20px;
     }
 
     video {
         object-fit: cover;
         width: 100%;
+        border-radius: 10px;
+        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
     }
 
     h1 {
         align-self: center;
+        background-color: #99aaa6;
+    }
+
+    .content {
+        width: 640px;
+        align-self: center;
+        font-family: Roboto, sans-serif;
+    }
+
+    .title {
+        align-self: center;
+        font-family: Roboto, sans-serif;
     }
 </style>

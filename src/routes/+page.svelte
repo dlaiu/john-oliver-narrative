@@ -5,7 +5,7 @@
     onMount(() => {
       function handleKeyDown(event) {
         if (event.key === 'ArrowRight') {
-          goto('/structure-visual'); // Navigate to the about page on right arrow press
+          goto('/story-structure'); // Navigate to the about page on right arrow press
         }
       }
   
@@ -34,6 +34,11 @@
             </div>
 
             <div class="article">
+
+                <div class="byline">
+                    <strong><p>By <a href="https://dlaiu.github.io">Darryl Laiu</a></p></strong>
+                </div>
+
                 <p>Last Week Tonight with John Oliver needs no introduction. </p>
 
                 <p>The show has been on air since 2014, and it has made a name for itself for its commentary and extravagant stunts. </p>
@@ -75,6 +80,10 @@
         justify-content: center; */
         margin: 0;
         font-family: Arial, sans-serif;
+    }
+
+    .byline {
+        margin-top: 40px;
     }
 
     .content {
