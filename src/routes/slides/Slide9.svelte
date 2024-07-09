@@ -1,4 +1,5 @@
 <script>
+    import { base } from '$app/paths';
 	import Slide from '$lib/Slide.svelte';
 
 	import { onMount } from 'svelte';
@@ -53,7 +54,7 @@
         <p class="sticky">Oliver also shows his supporting <span style="background-color:#faedcb">evidence</span> very clearly.</p>
 
 		<video bind:this={video} preload="auto" data-autoplay>
-			<source src="/JO_Source_2.mp4" type="video/mp4" />
+			<source src="{base}/JO_Source_2.mp4" type="video/mp4" />
 		</video>
 
         <p class="transcript">

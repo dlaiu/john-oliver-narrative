@@ -1,4 +1,6 @@
 <script>
+    import { base } from '$app/paths';
+
 	import Slide from '$lib/Slide.svelte';
 
 	import { onMount } from 'svelte';
@@ -56,7 +58,7 @@
 		</p>
 
 		<video bind:this={video} preload="auto" data-autoplay>
-			<source src="/JO_Point_2.mp4" type="video/mp4" />
+			<source src="{base}/JO_Point_2.mp4" type="video/mp4" />
 		</video>
 
 		<p class="transcript">

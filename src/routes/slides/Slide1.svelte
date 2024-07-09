@@ -1,13 +1,13 @@
 <script>
     import Slide from '$lib/Slide.svelte';
-    let title;
+    import { base } from '$app/paths';
 
 </script>
 
 <Slide bgColor="#8db3cf">
     <div class="content">
         <p class="sticky">This is John Oliver.</p>
-        <video id="hero" data-src="/JO_joke_mobile.mp4" preload="auto" data-autoplay></video>
+        <video id="hero" data-src="{base}/JO_joke_mobile.mp4" preload="auto" data-autoplay></video>
         <!-- <img id="hero" src="/JO_portrait-screengrab.png" alt=""> -->
     </div>
 </Slide>

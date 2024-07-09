@@ -15,7 +15,7 @@ const config = {
 		}),
 		paths: {
 			base: process.env.NODE_ENV === 'production' ? '/john-oliver-narrative' : '',
-			relative: false
+			relative: true
 		}
 	},
 	preprocess: vitePreprocess(),

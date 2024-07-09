@@ -1,6 +1,6 @@
 <script>
     import Slide from '$lib/Slide.svelte';
-    let title;
+    import { base } from '$app/paths';
 
 </script>
 
@@ -10,7 +10,7 @@
             <p class="sticky fragment fade-out">He has consistently insisted that his show isn't journalism.</p>
             <p class="sticky fragment fade-in">I disagree.</p>
         </div>
-        <img id="hero" src="/JO_not-journalism_screengrab.png" alt="">
+        <img id="hero" src="{base}/JO_not-journalism_screengrab.png" alt="">
     </div>
 </Slide>
 

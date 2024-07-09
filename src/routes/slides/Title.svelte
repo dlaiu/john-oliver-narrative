@@ -1,13 +1,13 @@
 <script>
     import Slide from '$lib/Slide.svelte';
-    let title;
+    import { base } from '$app/paths';
 
 </script>
 
 <Slide bgColor="#8db3cf">
     <div class="content">
         <h1 id="headline">How John Oliver does good journalism while making you laugh</h1>
-        <img id="hero" src="/JO_portrait-screengrab.png" alt="">
+        <img id="hero" src="{base}/JO_portrait-screengrab.png" alt="">
     </div>
 </Slide>
 

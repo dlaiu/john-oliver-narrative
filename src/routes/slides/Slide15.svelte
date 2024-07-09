@@ -1,13 +1,14 @@
 <script>
     import Slide from '$lib/Slide.svelte';
+    import { base } from '$app/paths';
 </script>
 
 <Slide bgColor="#8db3cf">
     <div class="content">
         <p class="sticky">And no one can deny the impact the show has had on policy:</p>
-        <img src="/JO_impact_1.png" alt="">
-        <img src="/JO_impact_2.png" alt="">
-        <img src="/JO_impact_3.png" alt="">
+        <img src="{base}/JO_impact_1.png" alt="">
+        <img src="{base}/JO_impact_2.png" alt="">
+        <img src="{base}/JO_impact_3.png" alt="">
 
     </div>
 

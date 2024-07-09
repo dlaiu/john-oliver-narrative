@@ -1,12 +1,13 @@
 <script>
     import Slide from '$lib/Slide.svelte';
+    import { base } from '$app/paths';
 </script>
 
 <Slide bgColor="#8db3cf">
     <div class="content">
         <p class="sticky">In April, Oliver finally admitted to "Sporadic Acts of Journalism".</p>
-        <img src="/JO_journalism-article_1.png" alt="">
-        <img src="/JO_journalism-article_2.png" alt="">
+        <img src="{base}/JO_journalism-article_1.png" alt="">
+        <img src="{base}/JO_journalism-article_2.png" alt="">
 
     </div>
 
@@ -28,7 +29,7 @@
 
     img {
         width: 100%;
-        
+
     }
 
     .sticky {   

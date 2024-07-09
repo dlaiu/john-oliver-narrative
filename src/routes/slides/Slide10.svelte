@@ -1,4 +1,5 @@
 <script>
+    import { base } from '$app/paths';
 	import Slide from '$lib/Slide.svelte';
 
 	import { onMount } from 'svelte';
@@ -53,7 +54,7 @@
         <p class="sticky">He then <span style="background-color:#f7d9c4">elaborates</span> on the relevance of the source, linking it back to his point.</p>
 
 		<video bind:this={video} preload="auto" data-autoplay>
-			<source src="/JO_Explanation_2.mp4" type="video/mp4" />
+			<source src="{base}/JO_Explanation_2.mp4" type="video/mp4" />
 		</video>
 
         <p class="transcript">

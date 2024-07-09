@@ -1,4 +1,5 @@
 <script>
+    import { base } from '$app/paths';
 	import Slide from '$lib/Slide.svelte';
 
 	import { onMount } from 'svelte';
@@ -53,7 +54,7 @@
         <p class="sticky">He then uses the <span style="background-color:#FFADAD">joke</span> to puncutate the point he's trying to make.</p>
 
 		<video bind:this={video} preload="auto" data-autoplay>
-			<source src="/JO_Joke_Landscape.mp4" type="video/mp4" />
+			<source src="{base}/JO_Joke_Landscape.mp4" type="video/mp4" />
 		</video>
 
         <p class="transcript">
