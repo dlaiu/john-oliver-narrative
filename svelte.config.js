@@ -14,7 +14,7 @@ const config = {
 			fallback: '404.html'
 		}),
 		paths: {
-			base: process.env.NODE_ENV === 'production' ? '/dlaiu/john-oliver-narrative' : ''
+			base: process.env.NODE_ENV === 'production' ? '/john-oliver-narrative' : ''
 			// relative: false
 		}
 	},
