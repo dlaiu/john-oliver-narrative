@@ -9,16 +9,20 @@
 		"check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json --watch",
 		"lint": "prettier --check . && eslint .",
-		"format": "prettier --write ."
+		"format": "prettier --write .",
+		"predeploy": "npm run build",
+		"deploy": "gh-pages -d build"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^3.0.0",
+		"@sveltejs/adapter-static": "^3.0.1",
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^3.0.0",
 		"@types/eslint": "^8.56.0",
 		"eslint": "^8.56.0",
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-svelte": "^2.35.1",
+		"gh-pages": "^6.1.1",
 		"prettier": "^3.1.1",
 		"prettier-plugin-svelte": "^3.1.2",
 		"svelte": "^4.2.7",
@@ -30,6 +34,7 @@
 	"dependencies": {
 		"d3": "^7.9.0",
 		"intersection-observer": "^0.12.2",
+		"reveal.js": "^5.1.0",
 		"scrollama": "^3.2.0",
 		"scrolly-video": "^0.0.19"
 	}
