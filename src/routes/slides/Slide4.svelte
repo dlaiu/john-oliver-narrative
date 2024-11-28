@@ -6,10 +6,26 @@
 
     import { tweened } from 'svelte/motion';
 
+    import { onMount } from 'svelte';
+
+    onMount(() => {
+        const updateHeight = () => {
+            const isDesktop = window.innerWidth >= 768;
+            svg_height = isDesktop ? 400 : 600;
+        };
+
+        updateHeight();
+        window.addEventListener('resize', updateHeight);
+
+        return () => window.removeEventListener('resize', updateHeight);
+    });
+
 
     let svg_width;
-    let svg_height = 600;
-    let margins = {top: 20, bottom: 20, left: 20, right: 20}
+    // let svg_height = 600;
+    let svg_height;
+    let margins = {top: 20, bottom: 20, left: 20, right: 20};
+
 
     $: chartWidth = svg_width - margins.left - margins.right;
     $: chartHeight = svg_height - margins.top - margins.bottom;
@@ -40,39 +56,35 @@
 </script>
 
 <Slide bgColor="#8db3cf">
-
-    <div class="content">
-        <section>
-            <div>
-                <p class="sticky">In numbers,</p>
-            </div>
-            <div class="bar-chart" bind:clientWidth = { svg_width }>
-                <svg width={svg_width} height={svg_height}>
-                    <g transform={`translate(${margins.left}, ${margins.top})`}>
-                        <rect x="{355}" y="0" width="200" height="{yScale(28)}" fill="#eeeee4" ></rect>
-                        <rect x="{355}" y="0" width="200" height="{yScale(0)}" fill="#FFADAD" ></rect>
-                    </g>
-                    <!-- <g transform="translate({chartCentre - margins.left}, {margins.top})" bind:this={yAxis} /> -->
-                </svg>
-            </div>
-        </section>
-        <section data-auto-animate>
-            <div class="r-stack">
-                <p class="sticky fragment fade-out">jokes were only about 25% of the segment.</p>
-                <p class="sticky fragment fade-in"> Quantitatively, his stories are much more informative than comedy.</p>
-            </div>
-            <div class="bar-chart" bind:clientWidth = { svg_width }>
-                <svg width={svg_width} height={svg_height}>
-                    <g transform={`translate(${margins.left}, ${margins.top})`}>
-                        <rect x="{355}" y="0" width="200" height="{yScale(28)}" fill="#eeeee4" ></rect>
-                        <rect x="{355}" y="0" width="200" height="{yScale(6.9)}" fill="#FFADAD" ></rect>
-                    </g>
-                    <!-- <g transform="translate({chartCentre - margins.left}, {margins.top})" bind:this={yAxis} /> -->
-                </svg>
-            </div>
-    
-        </section>
-    </div>
+    <section data-auto-animate>
+        <div>
+            <p data-id="label" class="sticky">In numbers,</p>
+        </div>
+        <div class="bar-chart" bind:clientWidth = { svg_width }>
+            <svg width={svg_width} height={svg_height}>
+                <g transform={`translate(${margins.left}, ${margins.top})`}>
+                    <rect x="{355}" y="0" width="200" height="{yScale(28)}" fill="#eeeee4" ></rect>
+                    <rect x="{355}" y="0" width="200" height="{yScale(0)}" fill="#FFADAD" ></rect>
+                </g>
+                <!-- <g transform="translate({chartCentre - margins.left}, {margins.top})" bind:this={yAxis} /> -->
+            </svg>
+        </div>
+    </section>
+    <section data-auto-animate>
+        <div class="r-stack">
+            <p data-id="label" class="sticky fragment fade-out">jokes were only about 25% of the segment.</p>
+            <p data-id="label" class="sticky fragment fade-in"> Quantitatively, his stories are much more informative than comedy.</p>
+        </div>
+        <div class="bar-chart" bind:clientWidth = { svg_width }>
+            <svg width={svg_width} height={svg_height}>
+                <g transform={`translate(${margins.left}, ${margins.top})`}>
+                    <rect x="{355}" y="0" width="200" height="{yScale(28)}" fill="#eeeee4" ></rect>
+                    <rect x="{355}" y="0" width="200" height="{yScale(6.9)}" fill="#FFADAD" ></rect>
+                </g>
+                <!-- <g transform="translate({chartCentre - margins.left}, {margins.top})" bind:this={yAxis} /> -->
+            </svg>
+        </div>
+    </section>
 </Slide>
 
 <style>
@@ -95,5 +107,24 @@
         padding: 50px;
         font-size: 4em;
         color: #494949;
+    }
+
+    @media (min-width: 768px) {
+        .sticky {
+            font-size: 2em;
+        }
+
+        #hero {
+            max-width: 330px; /* Optional: Limit image width for a balanced layout */
+            margin: 1.5em auto; /* Center image */
+            display: block; /* Ensure image is treated as a block element */
+            /* max-height: 40vh; */
+            
+        }
+
+        /* .bar-chart svg {
+            height: 300px; 
+        } */
+
     }
 </style>

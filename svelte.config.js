@@ -14,8 +14,8 @@ const config = {
 			fallback: '404.html'
 		}),
 		paths: {
-			base: process.env.NODE_ENV === 'production' ? '/john-oliver-narrative' : '',
-			relative: true
+			base: process.env.NODE_ENV === 'production' ? '/john-oliver-narrative' : ''
+			// relative: true
 		}
 	},
 	preprocess: vitePreprocess(),

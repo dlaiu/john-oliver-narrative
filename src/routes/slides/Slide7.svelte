@@ -83,4 +83,23 @@
         font-size: 4em;
         color: #494949;
     }
+
+    @media (min-width: 768px) {
+        .sticky {
+            font-size: 2em;
+        }
+
+        #hero {
+            max-width: 330px; /* Optional: Limit image width for a balanced layout */
+            margin: 1.5em auto; /* Center image */
+            display: block; /* Ensure image is treated as a block element */
+            /* max-height: 40vh; */
+            
+        }
+
+        /* .bar-chart svg {
+            height: 300px; 
+        } */
+
+    }
 </style>

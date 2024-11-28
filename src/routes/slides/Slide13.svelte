@@ -5,12 +5,9 @@
 </script>
 
 <Slide bgColor="#8db3cf">
-    <div class="content">
-        
-        <p class="sticky">This is a map of the different sections across the episode.</p>
-        <JokesCombined />    
-        <p class="sticky fragment fade-in">This is how John Oliver tricks you into consuming journalism.</p>
-    </div>
+    <p class="sticky">This is a map of the different sections across the episode.</p>
+    <JokesCombined maxHeight="300px"/>    
+    <p class="sticky fragment fade-in">This is how John Oliver tricks you into consuming journalism.</p>
     
 </Slide>
 
@@ -22,6 +19,7 @@
         margin: auto;
         padding: 50px;
         /* width: 100%; */
+        max-height: 30vh;
     }
     
     /* #hero {
@@ -37,5 +35,18 @@
         color: #494949;
     }
 
+    @media (min-width: 768px) {
+
+        .content {
+            max-height: 30vh; /* Optional: Limit content height for a balanced layout */
+            justify-self: center;
+            margin:0;
+        }
+
+        .sticky {
+            font-size: 1.8em;
+        }
+
+    }
 
 </style>

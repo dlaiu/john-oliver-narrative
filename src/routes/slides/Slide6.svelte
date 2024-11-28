@@ -153,4 +153,31 @@
     .Joke {
         background-color: #FFADAD;
     }
+
+    @media (min-width: 768px) {
+        .content {
+            max-width: 100vw; /* Optional: Limit content width for better readability */
+            max-height: 100vh; /* Optional: Limit content height for a balanced layout */
+            justify-self: center;
+            margin:0;
+        }
+
+        .sticky {
+            font-size: 2em;
+            top: 30%;
+            /* bottom: 30%; */
+        }
+
+
+        .transcript {
+            display: block;
+            margin: 0;
+            position: static;
+            z-index: -1;
+            overflow: hidden;
+            text-align: justify;
+            color:#6f6f6f;
+            /* background: black; */
+        }
+    }
 </style>

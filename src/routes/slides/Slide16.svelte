@@ -5,12 +5,9 @@
 </script>
 
 <Slide bgColor="#8db3cf">
-    <div class="content">
-        
-        <p class="sticky">So maybe that's the key to saving journalism.</p>
-        <JokesCombined />    
-        <p class="sticky">Make a point while making your audience laugh.</p>
-    </div>
+    <p class="sticky">So maybe that's the key to saving journalism.</p>
+    <JokesCombined maxHeight="300px"/> 
+    <p class="sticky">Make a point while making your audience laugh.</p>
     
 </Slide>
 
@@ -37,5 +34,17 @@
         color: #494949;
     }
 
+    @media (min-width: 768px) {
 
+        .content {
+            max-height: 30vh; /* Optional: Limit content height for a balanced layout */
+            justify-self: center;
+            margin:0;
+        }
+
+        .sticky {
+            font-size: 1.8em;
+        }
+
+    }
 </style>

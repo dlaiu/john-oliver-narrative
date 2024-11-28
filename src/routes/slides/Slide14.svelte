@@ -41,5 +41,25 @@
         color: #494949;
     }
 
+    @media (min-width: 768px) {
+        .content {
+            padding: 50px; /* Increased padding for desktop */
+            max-width: 800px; /* Optional: Limit content width for better readability */
+            max-height: 600px; /* Optional: Limit content height for a balanced layout */
+        }
 
+        .sticky {
+            font-size: 1.7em;
+            max-width: 30vw;
+            justify-self: center;
+        }
+
+        img {
+            max-width: 330px; /* Optional: Limit image width for a balanced layout */
+            margin: 1.5em auto; /* Center image */
+            display: block; /* Ensure image is treated as a block element */
+            /* max-height: 40vh; */
+            
+        }
+    }
 </style>

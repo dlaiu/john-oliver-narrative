@@ -6,6 +6,21 @@
 
     import { tweened } from 'svelte/motion';
 
+    import { onMount } from 'svelte';
+
+    // let svg_height;
+
+    // onMount(() => {
+    //     const updateHeight = () => {
+    //         const isDesktop = window.innerWidth >= 768;
+    //         svg_height = isDesktop ? 400 : 600;
+    //     };
+
+    //     updateHeight();
+    //     window.addEventListener('resize', updateHeight);
+
+    //     return () => window.removeEventListener('resize', updateHeight);
+    // });
 
     let svg_width;
     let svg_height = 600;
@@ -43,26 +58,23 @@
 
 <Slide bgColor="#8db3cf">
 
-    <div class="content">
-        <section>
-            <div class="r-stack">
-                <p class="sticky fragment fade-out">Oliver actually follows this structure quite closely.</p>
-                <p class="sticky fragment fade-in">And it's repeated pretty consistently throughout the story.</p>
-            </div>
-            <div class="bar-chart" bind:clientWidth = { svg_width }>
-                <svg width={svg_width} height={svg_height}>
-                    <g transform={`translate(${margins.left}, ${margins.top})`}>
-                        <rect x="185" y="0" width="{yScale(25)}" height="500" fill="#dbcdf0" ></rect>
-                        <rect x="327" y="0" width="{yScale(25)}" height="500" fill="#faedcb" ></rect>
-                        <rect x="469" y="0" width="{yScale(25)}" height="500" fill="#f7d9c4" ></rect>
-                        <rect x="{chartHeight + 50}" y="0" width="{yScale(25)}" height="500" fill="#FFADAD" ></rect>
-                    </g>
-                    <!-- <g transform="translate({chartCentre - margins.left}, {margins.top})" bind:this={yAxis} /> -->
-                </svg>
-            </div>
-        </section>
-
-    </div>
+    <section>
+        <div class="r-stack">
+            <p class="sticky fragment fade-out">Oliver actually follows this structure quite closely.</p>
+            <p class="sticky fragment fade-in">And it's repeated pretty consistently throughout the story.</p>
+        </div>
+        <div class="bar-chart" bind:clientWidth = { svg_width }>
+            <svg width={svg_width} height={svg_height}>
+                <g transform={`translate(${margins.left}, ${margins.top})`}>
+                    <rect x="185" y="0" width="{yScale(25)}" height="500" fill="#dbcdf0" ></rect>
+                    <rect x="327" y="0" width="{yScale(25)}" height="500" fill="#faedcb" ></rect>
+                    <rect x="469" y="0" width="{yScale(25)}" height="500" fill="#f7d9c4" ></rect>
+                    <rect x="{chartHeight + 50}" y="0" width="{yScale(25)}" height="500" fill="#FFADAD" ></rect>
+                </g>
+                <!-- <g transform="translate({chartCentre - margins.left}, {margins.top})" bind:this={yAxis} /> -->
+            </svg>
+        </div>
+    </section>
 
 </Slide>
 
@@ -86,5 +98,27 @@
         padding: 50px;
         font-size: 4em;
         color: #494949;
+    }
+
+    @media (min-width: 768px) {
+        .content {
+            padding: 50px; /* Increased padding for desktop */
+            max-width: 800px; /* Optional: Limit content width for better readability */
+            max-height: 600px; /* Optional: Limit content height for a balanced layout */
+        }
+
+        .sticky {
+            font-size: 1.8em;
+            max-width: 30vw;
+            justify-self: center;
+        }
+
+        #hero {
+            max-width: 330px; /* Optional: Limit image width for a balanced layout */
+            margin: 1.5em auto; /* Center image */
+            display: block; /* Ensure image is treated as a block element */
+            /* max-height: 40vh; */
+            
+        }
     }
 </style>
