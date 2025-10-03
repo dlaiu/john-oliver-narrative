@@ -4,9 +4,9 @@
 
 </script>
 
-<Slide bgColor="#8db3cf">
+<Slide bgColor="#8db3cf" bgImage="{base}/Paper-Texture-7.jpg" bgOpacity="0.2">
     <div class="content">
-        <video id="hero" data-src="{base}/JO_joke_mobile.mp4" preload="auto" data-autoplay></video>
+        <video id="hero" data-src="{base}/JO_joke_mobile.mp4" preload="auto" controls muted></video>
     </div>
 </Slide>
 
@@ -20,6 +20,24 @@
     #hero {
         width: 100%;
         height: auto;
+    }
+
+    #hero::-webkit-media-controls-panel {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    #hero:hover::-webkit-media-controls-panel {
+        opacity: 1;
+    }
+
+    /* Firefox */
+    #hero {
+        --controls-opacity: 0;
+    }
+
+    #hero:hover {
+        --controls-opacity: 1;
     }
 
     .sticky {   

@@ -1,27 +1,38 @@
 <script>
     import { base } from '$app/paths';
+	import { browser } from '$app/environment';
 	import Slide from '$lib/Slide.svelte';
 
-	import { onMount } from 'svelte';
+	import { onMount, onDestroy } from 'svelte';
 	let video;
 	let captions = [];
 	let subtitles = [];
 	let durationPerWord = 0.28;
+	let timeUpdateHandler;
+	let slideElement; // Reference to this slide's DOM element
 
 	onMount(() => {
-		captions = document.querySelectorAll('.caption');
+		if (!browser) return;
+		
+		// Only select captions within this slide element
+		captions = slideElement.querySelectorAll('.caption');
 
 		console.log('Captions:', captions); // Verify captions are selected
 
-		video.addEventListener('timeupdate', () => {
+		timeUpdateHandler = () => {
 			const currentTime = video.currentTime;
 			console.log('Current Time:', currentTime); // Verify video time updates
 
-			captions.forEach((caption) => {
+			captions.forEach((caption, captionIndex) => {
 				const start = parseTime(caption.getAttribute('data-start'));
 				console.log('Start Time:', start); // Verify start time parsing
 
-				if (currentTime >= start) {
+				// Get the next caption's start time to determine end time
+				const nextCaption = captions[captionIndex + 1];
+				const end = nextCaption ? parseTime(nextCaption.getAttribute('data-start')) : video.duration;
+
+				// Only highlight if current time is within this caption's timeframe
+				if (currentTime >= start && currentTime < end) {
 					const subtitles = caption.querySelectorAll('.subtitle');
 					console.log('Subtitles:', subtitles); // Verify subtitles are selected
 
@@ -32,11 +43,41 @@
 							subtitle.classList.add('highlighted');
 							subtitle.style.backgroundColor = '#f7d9c4';
 							console.log(`Adding is-visible to word ${index}`); // Log class addition
+						} else {
+							subtitle.classList.remove('highlighted');
+							subtitle.style.backgroundColor = '';
 						}
+					});
+				} else {
+					// Remove highlighting from captions that are not currently active
+					const subtitles = caption.querySelectorAll('.subtitle');
+					subtitles.forEach((subtitle) => {
+						subtitle.classList.remove('highlighted');
+						subtitle.style.backgroundColor = '';
 					});
 				}
 			});
-		});
+		};
+
+		if (video) {
+			video.addEventListener('timeupdate', timeUpdateHandler);
+		}
+	});
+
+	onDestroy(() => {
+		if (!browser) return;
+		
+		if (video && timeUpdateHandler) {
+			video.removeEventListener('timeupdate', timeUpdateHandler);
+		}
+		// Clean up highlighting only in this slide
+		if (slideElement) {
+			const allSubtitles = slideElement.querySelectorAll('.subtitle');
+			allSubtitles.forEach((subtitle) => {
+				subtitle.classList.remove('highlighted');
+				subtitle.style.backgroundColor = '';
+			});
+		}
 	});
 
 	function parseTime(timeString) {
@@ -49,17 +90,20 @@
 	}
 </script>
 
-<Slide bgColor="#8db3cf">
-    <div class="content">
+<Slide bgColor="#8db3cf" bgImage="{base}/Paper-Texture-7.jpg" bgOpacity="0.2">
+    <div class="content" bind:this={slideElement}>
         <p class="sticky">He then <span style="background-color:#f7d9c4">elaborates</span> on the relevance of the source, linking it back to his point.</p>
 
-		<video bind:this={video} preload="auto" data-autoplay>
-			<source src="{base}/JO_Explanation_2.mp4" type="video/mp4" />
-		</video>
+		<div class="video-container">
+			<video bind:this={video} preload="auto" data-autoplay controls muted>
+				<source src="{base}/JO_Explanation_2.mp4" type="video/mp4" />
+			</video>
+			<img src="{base}/scanlines-fade.png" alt="" class="scanlines-overlay" />
+		</div>
 
         <p class="transcript">
             <span class="caption Point" data-start="00:20:53:16">But lawmakers shouldn't be learning how to perform executions  from one. That legislator then called in this guy, a  high school friend of his and criminal justice professor who put together a presentation  for the legislature in which he tried to prove the method  was painless by, for some reason, playing YouTube videos of kids  passing out from breathing helium.</span>
-            <span class="caption Source" data-start="00:21:14:11">So this is a teenager that is breathing helium  to make their voice sound funny, but they're not really thinking that when they're breathing helium,  they're not breathing oxygen. And so she's trying to get as big a breath  as she can, and in a second,  she becomes hypoxic. So then they get back up and they're  giggling and laughing. Now, obviously,  there's a lot wrong with that.</span>
+            <span class="caption Source" data-start="00:21:14:11">So this is a teenager that is breathing helium  to make their voice sound funny, but they're not really thinking that when they're breathing helium,  they're not breathing oxygen. And so she's trying to get as big a breath  as she can, and in a second,  she becomes hypoxic. So then they get back up and they're  giggling and laughing.</span>
             <span class="caption Explanation" data-start="00:00:00:00">
                 <span class="subtitle">Now,</span>
                 <span class="subtitle">obviously,</span>
@@ -141,12 +185,50 @@
     }
 
     .Joke {
-        background-color: #FFADAD;
+        /* background-color: #FFADAD; */
+    }
+
+    .video-container {
+        position: relative;
+        width: fit-content;
+        height: auto;
+        display: inline-block;
+        max-width: 100%;
+    }
+
+    .scanlines-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        object-fit: contain;
+        z-index: 1;
+        opacity: 0.35;
     }
 
     video {
         width: 100%;
         height: auto;
+    }
+
+    video::-webkit-media-controls-panel {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    video:hover::-webkit-media-controls-panel {
+        opacity: 1;
+    }
+
+    /* Firefox */
+    video {
+        --controls-opacity: 0;
+    }
+
+    video:hover {
+        --controls-opacity: 1;
     }
 
     .Point {

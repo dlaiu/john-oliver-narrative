@@ -4,10 +4,14 @@
 
 </script>
 
-<Slide bgColor="#8db3cf">
+
+<Slide bgColor="#8db3cf" bgImage="{base}/Paper-Texture-7.jpg" bgOpacity="0.2">
     <div class="content">
         <h1 id="headline">How John Oliver does good journalism while making you laugh</h1>
-        <img id="hero" src="{base}/JO_portrait-screengrab.png" alt="">
+        <div class="image-container">
+            <img id="hero" src="{base}/JO_portrait-screengrab.png" alt="">
+            <img src="{base}/scanlines-fade.png" alt="" class="scanlines-overlay" />
+        </div>
     </div>
 </Slide>
 
@@ -31,6 +35,30 @@
     #hero {
         max-width: 100%;
         height: 100%;
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: contain;
+    }
+
+    .image-container {
+        position: relative;
+        width: fit-content;
+        height: auto;
+        display: inline-block;
+        max-width: 100%;
+    }
+
+    .scanlines-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        object-fit: cover;
+        z-index: 1;
+        opacity: 0.35;
     }
 
     /* Desktop-specific styles */

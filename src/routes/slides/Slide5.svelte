@@ -1,9 +1,10 @@
 <script>
     import Slide from '$lib/Slide.svelte';
+    import { base } from '$app/paths';
 
 </script>
 
-<Slide bgColor="#8db3cf">
+<Slide bgColor="#8db3cf" bgImage="{base}/Paper-Texture-7.jpg" bgOpacity="0.2">
     <div class="content">
         <p class="sticky">This is the transcript for the entire episode.</p>   
         <div class="transcript-container">

@@ -4,6 +4,8 @@
     import {axisLeft} from 'd3-axis';
     import * as d3 from 'd3';
 
+    import { base } from '$app/paths';
+
     import { tweened } from 'svelte/motion';
 
     import { onMount } from 'svelte';
@@ -55,7 +57,7 @@
     
 </script>
 
-<Slide bgColor="#8db3cf">
+<Slide bgColor="#8db3cf" bgImage="{base}/Paper-Texture-7.jpg" bgOpacity="0.2">
     <section data-auto-animate>
         <div>
             <p data-id="label" class="sticky">In numbers,</p>

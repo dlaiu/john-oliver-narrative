@@ -4,6 +4,8 @@
     import {axisLeft} from 'd3-axis';
     import * as d3 from 'd3';
 
+    import { base } from '$app/paths';
+
     import { tweened } from 'svelte/motion';
 
 
@@ -39,7 +41,7 @@
     
 </script>
 
-<Slide bgColor="#8db3cf">
+<Slide bgColor="#8db3cf" bgImage="{base}/Paper-Texture-7.jpg" bgOpacity="0.2">
 
     <div class="content">
         <section>

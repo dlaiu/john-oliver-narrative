@@ -4,7 +4,7 @@
 
 </script>
 
-<Slide bgColor="#8db3cf">
+<Slide bgColor="#8db3cf" bgImage="{base}/Paper-Texture-7.jpg" bgOpacity="0.2">
     <div class="content">
         <div class="r-stack">
             <p class="sticky fragment fade-out">He has consistently insisted that his show isn't journalism.</p>

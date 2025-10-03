@@ -3,7 +3,7 @@
     import { base } from '$app/paths';
 </script>
 
-<Slide bgColor="#8db3cf">
+<Slide bgColor="#8db3cf" bgImage="{base}/Paper-Texture-7.jpg" bgOpacity="0.2">
     <div class="content">
         <p class="sticky">In April, Oliver finally admitted to "Sporadic Acts of Journalism".</p>
         <img src="{base}/JO_journalism-article_1.png" alt="">

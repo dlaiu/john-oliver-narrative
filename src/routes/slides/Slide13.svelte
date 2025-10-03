@@ -1,10 +1,11 @@
 <script>
     import Slide from '$lib/Slide.svelte';
 	import JokesCombined from '../../ai2html/jokesCombined.svelte';
+    import { base } from '$app/paths';
 
 </script>
 
-<Slide bgColor="#8db3cf">
+<Slide bgColor="#8db3cf" bgImage="{base}/Paper-Texture-7.jpg" bgOpacity="0.2">
     <p class="sticky">This is a map of the different sections across the episode.</p>
     <JokesCombined maxHeight="300px"/>    
     <p class="sticky fragment fade-in">This is how John Oliver tricks you into consuming journalism.</p>

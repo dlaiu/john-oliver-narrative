@@ -4,10 +4,13 @@
 
 </script>
 
-<Slide bgColor="#8db3cf">
+<Slide bgColor="#8db3cf" bgImage="{base}/Paper-Texture-7.jpg" bgOpacity="0.2">
     <div class="content">
         <p class="sticky">This is John Oliver.</p>
-        <video id="hero" data-src="{base}/JO_joke_mobile.mp4" preload="auto" data-autoplay></video>
+        <div class="video-container">
+            <video id="hero" data-src="{base}/JO_joke_mobile.mp4" preload="auto" data-autoplay controls muted></video>
+            <img src="{base}/scanlines-fade.png" alt="" class="scanlines-overlay" />
+        </div>
         <!-- <img id="hero" src="/JO_portrait-screengrab.png" alt=""> -->
     </div>
 </Slide>
@@ -20,8 +23,48 @@
     }
 
     #hero {
-        width: 80%;
+        width: 100%;
         height: auto;
+        display: block;
+        object-fit: contain;
+    }
+
+    #hero::-webkit-media-controls-panel {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    #hero:hover::-webkit-media-controls-panel {
+        opacity: 1;
+    }
+
+    /* Firefox */
+    #hero {
+        --controls-opacity: 0;
+    }
+
+    #hero:hover {
+        --controls-opacity: 1;
+    }
+
+    .video-container {
+        position: relative;
+        width: fit-content;
+        height: auto;
+        display: inline-block;
+        max-width: 100%;
+    }
+
+    .scanlines-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        object-fit: cover;
+        z-index: 1;
+        opacity: 0.35;
     }
 
     .sticky {   

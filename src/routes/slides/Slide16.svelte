@@ -1,10 +1,11 @@
 <script>
     import Slide from '$lib/Slide.svelte';
 	import JokesCombined from '../../ai2html/jokesCombined.svelte';
+    import { base } from '$app/paths';
 
 </script>
 
-<Slide bgColor="#8db3cf">
+<Slide bgColor="#8db3cf" bgImage="{base}/Paper-Texture-7.jpg" bgOpacity="0.2">
     <p class="sticky">So maybe that's the key to saving journalism.</p>
     <JokesCombined maxHeight="300px"/> 
     <p class="sticky">Make a point while making your audience laugh.</p>

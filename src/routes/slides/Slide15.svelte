@@ -3,7 +3,7 @@
     import { base } from '$app/paths';
 </script>
 
-<Slide bgColor="#8db3cf">
+<Slide bgColor="#8db3cf" bgImage="{base}/Paper-Texture-7.jpg" bgOpacity="0.2">
     <div class="content">
         <p class="sticky">And no one can deny the impact the show has had on policy:</p>
         <img src="{base}/JO_impact_1.png" alt="">
